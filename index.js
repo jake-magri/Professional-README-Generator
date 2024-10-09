@@ -17,7 +17,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'installIntstructions',
+        name: 'installInfo',
         message: "What is your installation instructions?"
     },
     {
@@ -55,36 +55,36 @@ const questions = [
     
 ];
 
-const licenseBadge = function (license) {
+const licenseCheck = function (license) {
+    let badgeLink;
     if (license==="MIT License"){
-        return `![${license}](https://img.shields.io/badge/MIT%20License-purple)`;
+        badgeLink = `https://img.shields.io/badge/MIT%20License-purple`;
     } else if (license==="Eclipse Public License 2.0") {
-        return `![${license}](https://img.shields.io/badge/Eclipse%20Public%20License%202.0-purple)`;
+        badgeLink = 'https://img.shields.io/badge/Eclipse%20Public%20License%202.0-purple';
     } else if (license==="Mozilla Public License 2.0") {
-        return `![${license}](https://img.shields.io/badge/Mozilla%20Public%20License%202.0-purple)`;
+        badgeLink = 'https://img.shields.io/badge/Mozilla%20Public%20License%202.0-purple';
     }
+    return `![License](${badgeLink})`;
 }
-const generateReadme = ({projectTitle,description,installInstructions, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress}) => 
+const generateReadme = ({projectTitle, description, installInfo, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress}) => 
 `# ${projectTitle}
-### ${licenseBadge(license)}
+### ${licenseCheck(license)}
 ## Description
 
 ${description}
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [How to Contribute](#How to Contribute)
-- [Tests](#Tests)
+- [How to Contribute](#how-to-contribute)
+- [Tests](#tests)
 - [License](#license)
 - [Questions](#questions)
 
 ## Installation
 
-${installInstructions}
+${installInfo}
 
 ## Usage
 
@@ -101,16 +101,11 @@ ${testInstructions}
 ## License
 
 ${license}
+For additional information please visit the license file.
 
 ## Questions
 
-To reach me with additional questions please message me on either [GitHub](${github}) or [email](${emailAddress}).
-
-
-`;
-
-
-
+To reach me with additional questions please message me on either GitHub at ${github} or via email ${emailAddress}.`;
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
