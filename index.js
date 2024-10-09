@@ -68,7 +68,7 @@ const licenseCheck = function (license) {
 }
 const generateReadme = ({projectTitle, description, installInfo, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress}) => 
 `# ${projectTitle}
-### ${licenseCheck(license)}
+${licenseCheck(license)}
 ## Description
 
 ${description}
@@ -119,7 +119,7 @@ function init() {
     inquirer.prompt(questions).then((answers) => {
         const readmePageContent = generateReadme(answers);
 
-        writeToFile("README.txt", readmePageContent);
+        writeToFile("README.md", readmePageContent);
     });
 }
 
