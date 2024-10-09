@@ -50,8 +50,13 @@ const questions = [
         type: "input",
         name: "emailAddress",
         message: "What is your email address?"
+    },
+    {
+        type: "checkbox",
+        name: "attachment",
+        message: "Do you have an attachment?",
+        choices: ['Yes', 'No']
     }
-    
     
 ];
 
@@ -66,7 +71,7 @@ const licenseCheck = function (license) {
     }
     return `![License](${badgeLink})`;
 }
-const generateReadme = ({projectTitle, description, installInfo, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress}) => 
+const generateReadme = ({projectTitle, description, installInfo, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress, attachment}) => 
 `# ${projectTitle}
 ${licenseCheck(license)}
 ## Description
@@ -88,6 +93,10 @@ ${installInfo}
 
 ## Usage
 
+###Video Demo
+![Video demo of application.](assets/videos/${attachment})
+
+### Usage Information
 ${usageInformation}
 
 ## How to Contribute
@@ -100,8 +109,7 @@ ${testInstructions}
 
 ## License
 
-${license}
-For additional information please visit the license file.
+${license} For additional information please visit the license file.
 
 ## Questions
 
