@@ -34,17 +34,53 @@ const questions = [
         type: 'input',
         name: 'testInstructions',
         message: "What is your test instructions?"
+    },
+    {
+        type: "list",
+        name: "license",
+        message: "Pick a license:",
+        choices: ['MIT License','Eclipse Public License 2.0','Mozilla Public License 2.0']
+    },
+    {
+        type: "input",
+        name: "github",
+        message: "What is your GitHub?"
+    },
+    {
+        type: "input",
+        name: "emailAddress",
+        message: "What is your email address?"
     }
     
     
 ];
 
-const generateReadme = ({projectTitle,description,installInstructions, usageInformation, contributionGuidelines, testInstructions}) => 
+const licenseBadge = function (license) {
+    if (license==="MIT License"){
+        return `![${license}](https://img.shields.io/badge/MIT%20License-purple)`;
+    } else if (license==="Eclipse Public License 2.0") {
+        return `![${license}](https://img.shields.io/badge/Eclipse%20Public%20License%202.0-purple)`;
+    } else if (license==="Mozilla Public License 2.0") {
+        return `![${license}](https://img.shields.io/badge/Mozilla%20Public%20License%202.0-purple)`;
+    }
+}
+const generateReadme = ({projectTitle,description,installInstructions, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress}) => 
 `# ${projectTitle}
-
+### ${licenseBadge(license)}
 ## Description
 
 ${description}
+
+## Table of Contents (Optional)
+
+If your README is long, add a table of contents to make it easy for users to find what they need.
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [How to Contribute](#How to Contribute)
+- [Tests](#Tests)
+- [License](#license)
+- [Questions](#questions)
 
 ## Installation
 
@@ -54,13 +90,26 @@ ${installInstructions}
 
 ${usageInformation}
 
-## Contributing
+## How to Contribute
 
 ${contributionGuidelines}
 
 ## Tests
 
-${testInstructions}`;
+${testInstructions}
+
+## License
+
+${license}
+
+## Questions
+
+To reach me with additional questions please message me on either [GitHub](${github}) or [email](${emailAddress}).
+
+
+`;
+
+
 
 
 // TODO: Create a function to write README file
