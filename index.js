@@ -19,11 +19,27 @@ const questions = [
         type: 'input',
         name: 'installIntstructions',
         message: "What is your installation instructions?"
+    },
+    {
+        type: 'input',
+        name: 'usageInformation',
+        message: "What is your usage information?"
+    },
+    {
+        type: 'input',
+        name: 'contributionGuidelines',
+        message: "What is your contribution guidelines?"
+    },
+    {
+        type: 'input',
+        name: 'testInstructions',
+        message: "What is your test instructions?"
     }
+    
     
 ];
 
-const generateReadme = ({projectTitle,description,installInstructions}) => 
+const generateReadme = ({projectTitle,description,installInstructions, usageInformation, contributionGuidelines, testInstructions}) => 
 `# ${projectTitle}
 
 ## Description
@@ -33,7 +49,18 @@ ${description}
 ## Installation
 
 ${installInstructions}
-`;
+
+## Usage
+
+${usageInformation}
+
+## Contributing
+
+${contributionGuidelines}
+
+## Tests
+
+${testInstructions}`;
 
 
 // TODO: Create a function to write README file
