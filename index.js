@@ -52,10 +52,16 @@ const questions = [
         message: "What is your email address?"
     },
     {
-        type: "checkbox",
+        type: "list",
         name: "attachment",
         message: "Do you have an attachment?",
         choices: ['Yes', 'No']
+    },
+    {
+        type: 'input',
+        name: 'attachmentName',
+        message: 'Please add file to videos directory and provide the name of the file.',
+        when: (answers) => answers.attachment === 'Yes' // gets attachment question response and only shows question if the user selects 'Yes'
     }
     
 ];
@@ -71,7 +77,7 @@ const licenseCheck = function (license) {
     }
     return `![License](${badgeLink})`;
 }
-const generateReadme = ({projectTitle, description, installInfo, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress, attachment}) => 
+const generateReadme = ({projectTitle, description, installInfo, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress, attachmentName}) => 
 `# ${projectTitle}
 ${licenseCheck(license)}
 ## Description
@@ -93,8 +99,8 @@ ${installInfo}
 
 ## Usage
 
-###Video Demo
-![Video demo of application.](assets/videos/${attachment})
+### Video Demo
+![Video demo of application.](assets/videos/${attachmentName})
 
 ### Usage Information
 ${usageInformation}
