@@ -1,6 +1,8 @@
 // Include packages needed for this application
 import inquirer from "inquirer";
 import fs from "fs";
+import "./utils/generateMarkdown.js";
+import generateMarkdown from "./utils/generateMarkdown.js";
 
 // Create an array of questions for user input
 const questions = [
@@ -66,65 +68,11 @@ const questions = [
     
 ];
 
-// declare function to check license selection and set badgeLink.
-
-const licenseCheck = function (license) {
-    let badgeLink;
-    if (license==="MIT License"){
-        badgeLink = `https://img.shields.io/badge/MIT%20License-purple`;
-    } else if (license==="Eclipse Public License 2.0") {
-        badgeLink = 'https://img.shields.io/badge/Eclipse%20Public%20License%202.0-purple';
-    } else if (license==="Mozilla Public License 2.0") {
-        badgeLink = 'https://img.shields.io/badge/Mozilla%20Public%20License%202.0-purple';
-    }
-    return `![License](${badgeLink})`;
-}
-
 // declare generate readme using badgeLink and prompt responses to structure in markdown
 
-const generateReadme = ({projectTitle, description, installInfo, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress, attachmentName}) => 
-`# ${projectTitle}
-${licenseCheck(license)}
-## Description
-
-${description}
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [How to Contribute](#how-to-contribute)
-- [Tests](#tests)
-- [License](#license)
-- [Questions](#questions)
-
-## Installation
-
-${installInfo}
-
-## Usage
-
-### Video Demo
-![Video demo of application.](assets/videos/${attachmentName})
-
-### Usage Information
-${usageInformation}
-
-## How to Contribute
-
-${contributionGuidelines}
-
-## Tests
-
-${testInstructions}
-
-## License
-
-${license} For additional information please visit the license file.
-
-## Questions
-
-To reach me with additional questions please message me on either GitHub at ${github} or via email ${emailAddress}.`;
+const generateReadme = function (answers) {
+    return `${generateMarkdown(answers)}`
+}
 
 // function to write README file using fs import
 function writeToFile(fileName, data) {
@@ -138,7 +86,7 @@ function init() {
     inquirer.prompt(questions).then((answers) => {
         const readmePageContent = generateReadme(answers);
 
-        writeToFile("README.md", readmePageContent);
+        writeToFile("generatedREADME.md", readmePageContent);
     });
 }
 
