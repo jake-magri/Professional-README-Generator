@@ -1,8 +1,8 @@
-// TODO: Include packages needed for this application
+// Include packages needed for this application
 import inquirer from "inquirer";
 import fs from "fs";
 
-// TODO: Create an array of questions for user input
+// Create an array of questions for user input
 const questions = [
     
     {
@@ -61,10 +61,12 @@ const questions = [
         type: 'input',
         name: 'attachmentName',
         message: 'Please add file to videos directory and provide the name of the file.',
-        when: (answers) => answers.attachment === 'Yes' // gets attachment question response and only shows question if the user selects 'Yes'
+        when: (answers) => answers.attachment === 'Yes' // gets attachment question response and only shows question if the user selects 'Yes' https://www.npmjs.com/package/inquirer
     }
     
 ];
+
+// declare function to check license selection and set badgeLink.
 
 const licenseCheck = function (license) {
     let badgeLink;
@@ -77,6 +79,9 @@ const licenseCheck = function (license) {
     }
     return `![License](${badgeLink})`;
 }
+
+// declare generate readme using badgeLink and prompt responses to structure in markdown
+
 const generateReadme = ({projectTitle, description, installInfo, usageInformation, contributionGuidelines, testInstructions, license, github, emailAddress, attachmentName}) => 
 `# ${projectTitle}
 ${licenseCheck(license)}
@@ -121,14 +126,14 @@ ${license} For additional information please visit the license file.
 
 To reach me with additional questions please message me on either GitHub at ${github} or via email ${emailAddress}.`;
 
-// TODO: Create a function to write README file
+// function to write README file using fs import
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
         err ? console.error(err) : console.log('Success!')
     );
 }
 
-// TODO: Create a function to initialize app
+// Function to initialize app calling generate readme and write to file.
 function init() {
     inquirer.prompt(questions).then((answers) => {
         const readmePageContent = generateReadme(answers);
