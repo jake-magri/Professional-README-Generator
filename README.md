@@ -20,7 +20,10 @@ Clone git repo and run npm install to get dependencies before running.
 ## Usage
 
 ### Video Demo
-![Video demo of application.](assets/videos/firstTryVideoDemo.mp4)
+<video width="320" height="240" controls>
+  <source src="assets/videos/firstTryVideoDemo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ### Usage Information
 In the terminal, run node index,js and complete the prompts to have your README file generated.
