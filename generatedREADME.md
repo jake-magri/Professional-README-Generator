@@ -21,7 +21,7 @@ You can play the game on mobile or desktop by visiting the following link: https
 ## Usage
 
 ### Video Demo
-![Video demo of application.](assets/videos/firstTryVideoDemo.mp4)
+![FirstTryVideoDemo.mp4](https://github.com/user-attachments/assets/f355f3b4-8b6d-4475-8d92-9b66aaab9da7)
 
 ### Usage Information
 Enter Name: When users enter the webpage, they are prompted to enter their name. Choose a Car: After providing their name, users select their car from a list of colorful options. Start the Game: After selecting a car, the "Start" button begins the race and make the clock counting. Typing Race: users race by typing for Player1= "a" key & Player2 = "l" key (make sure the caps lock off), or tapping on the left/right if on mobile, as fast as possible,to move their cars toward the finish line. Save Score: Once the race ends, users can click the "Save Score" button to save their time to local storage. Play Again: users can click the "Play Again" button to restart the game and try to beat their previous score.
