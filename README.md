@@ -21,7 +21,7 @@ Clone git repo and run npm install to get dependencies before running.
 
 ### Video Demo
 
-![FirstTryVideoDemo.mp4](https://github.com/user-attachments/assets/f355f3b4-8b6d-4475-8d92-9b66aaab9da7)
+https://github.com/user-attachments/assets/f355f3b4-8b6d-4475-8d92-9b66aaab9da7
 
 ### Usage Information
 In the terminal, run node index,js and complete the prompts to have your README file generated.
